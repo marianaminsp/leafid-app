@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>LeafID Privacy Policy</title>
+<meta name="description" content="How LeafID collects, uses, and protects your information.">
+<link rel="icon" href="icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@700;800&display=swap">
+<style>
+  :root { --bg:#0B0F08; --panel:#141A10; --line:#2A3321; --fg:#F2F1E6; --muted:#A3AC9C; --accent:#93BC10; }
+  * { box-sizing: border-box; }
+  body { margin:0; background:var(--bg); color:var(--fg); font-family:"Manrope",system-ui,-apple-system,sans-serif; line-height:1.65; -webkit-font-smoothing:antialiased; }
+  .wrap { max-width:720px; margin:0 auto; padding:40px 20px 72px; }
+  .brand { display:flex; align-items:center; gap:12px; text-decoration:none; color:var(--fg); font-family:"Plus Jakarta Sans",sans-serif; font-weight:800; font-size:20px; }
+  .brand img { width:36px; height:36px; border-radius:9px; }
+  h1 { font-family:"Plus Jakarta Sans",sans-serif; font-weight:800; font-size:clamp(32px,6vw,44px); line-height:1.1; letter-spacing:-0.02em; margin:40px 0 8px; }
+  .updated { color:var(--muted); font-size:14px; margin:0 0 32px; }
+  h2 { font-family:"Plus Jakarta Sans",sans-serif; font-size:20px; margin:40px 0 10px; }
+  p, li { color:var(--fg); font-size:16px; }
+  ul { padding-left:20px; }
+  li { margin:6px 0; }
+  .muted { color:var(--muted); }
+  a { color:var(--accent); }
+  .summary { background:var(--panel); border:1px solid var(--line); border-radius:16px; padding:18px 22px; margin:0 0 8px; }
+  .summary ul { margin:0; }
+  table { width:100%; border-collapse:collapse; font-size:15px; margin-top:8px; }
+  th, td { text-align:left; vertical-align:top; padding:10px 8px; border-bottom:1px solid var(--line); }
+  th { color:var(--muted); font-weight:600; font-size:13px; text-transform:uppercase; letter-spacing:0.06em; }
+  .table-scroll { overflow-x:auto; }
+  footer { margin-top:56px; padding-top:20px; border-top:1px solid var(--line); color:var(--muted); font-size:14px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <a class="brand" href="./"><img src="icon.png" alt="">LeafID</a>
+
+  <h1>Privacy Policy</h1>
+  <p class="updated">Last updated: 4 October 2026</p>
+
+  <div class="summary">
+    <ul>
+      <li>We use your photos to identify plants and, when you save them, to build your Herbarium.</li>
+      <li>We never sell your data, show ads, or track you across other apps.</li>
+      <li>You can delete your account and everything in it from inside the app at any time.</li>
+    </ul>
+  </div>
+
+  <h2>Who we are</h2>
+  <p>LeafID is an iOS app for identifying plants and keeping a personal collection of the ones you find. It is built and run by Mariana Minafro Spinelli (“we”, “us”). This policy explains what information the app handles, why, and the choices you have.</p>
+
+  <h2>Information we collect</h2>
+  <p><strong>Account information.</strong> When you sign in with Apple, Google, or email, we receive your email address and, if you provide one, your name. Apple’s “Hide My Email” works with LeafID.</p>
+  <p><strong>Plant photos.</strong> Photos you take or choose in the app are sent to our servers for identification. If you save a plant to your Herbarium, the photo and a processed card image are stored with your account. Before upload, photos are re-encoded, which removes embedded metadata such as camera details and GPS tags.</p>
+  <p><strong>Location.</strong> If you allow location access, LeafID records where a plant was found (coordinates and the nearby place name) and saves it with that plant in your Herbarium. Location is only used while the app is open. You can turn it off in iOS Settings; identification still works without it.</p>
+  <p><strong>Your Herbarium.</strong> The plants you save, along with their names, descriptions, dates, and locations, are stored with your account so they sync across your devices.</p>
+  <p><strong>Usage and diagnostics.</strong> We collect app usage events (for example, that a scan was made or a screen was opened) and crash reports, to understand what works and fix problems. These are linked to your account so we can investigate issues you report.</p>
+
+  <h2>How we use it</h2>
+  <ul>
+    <li>To identify plants and show information about them.</li>
+    <li>To save and sync your Herbarium and profile.</li>
+    <li>To limit free identifications per day, which requires counting your scans.</li>
+    <li>To fix bugs, prevent abuse, and improve the app.</li>
+  </ul>
+  <p>We do not use your information for advertising, and we do not sell or rent it to anyone.</p>
+
+  <h2>Services that process data for us</h2>
+  <p>LeafID relies on these providers. Each receives only what it needs for its role.</p>
+  <div class="table-scroll">
+  <table>
+    <tr><th>Provider</th><th>Purpose</th><th>What it receives</th></tr>
+    <tr><td>Supabase</td><td>Accounts, database, photo storage</td><td>Account details, Herbarium, photos, locations</td></tr>
+    <tr><td>Pl@ntNet</td><td>Plant identification</td><td>The photo being identified</td></tr>
+    <tr><td>Google (Gemini)</td><td>Backup identification and plant descriptions</td><td>The photo being identified (only if Pl@ntNet can’t), and plant names</td></tr>
+    <tr><td>Groq</td><td>Plant descriptions</td><td>Plant names only, never photos or personal data</td></tr>
+    <tr><td>Wikipedia</td><td>Native range of a species</td><td>Plant names only</td></tr>
+    <tr><td>PostHog</td><td>Product analytics</td><td>Usage events, account ID, email</td></tr>
+    <tr><td>Sentry</td><td>Crash reporting</td><td>Crash and device diagnostics</td></tr>
+    <tr><td>Apple, Google</td><td>Sign-in</td><td>Handled under their own privacy policies</td></tr>
+  </table>
+  </div>
+  <p class="muted">Plant descriptions are generated once per species and shared across all users. They contain no personal information.</p>
+
+  <h2>Photo visibility</h2>
+  <p>Saved photos are stored at private, randomly generated web addresses so they load quickly in the app. They are not listed or searchable, but anyone who has the exact address of a photo could open it. When you share a plant, you choose what to send.</p>
+
+  <h2>Retention and deletion</h2>
+  <p>We keep your account and Herbarium for as long as your account exists. To delete everything, open the <strong>Druid</strong> tab and tap <strong>Delete account</strong> in the app. This permanently removes your account, saved plants, locations, and stored photos. Copies in backups and provider logs expire on their normal schedules.</p>
+
+  <h2>Your rights</h2>
+  <p>Depending on where you live, you may have the right to access, correct, export, or delete your data, or to object to how it is used. Email us and we will respond within 30 days.</p>
+
+  <h2>Children</h2>
+  <p>LeafID is not directed at children under 13, or the minimum age in your country. We do not knowingly collect data from them. If you believe a child has created an account, contact us and we will delete it.</p>
+
+  <h2>Changes</h2>
+  <p>If we change this policy, we will update the date above. For significant changes, we will also let you know in the app.</p>
+
+  <h2>Contact</h2>
+  <p>Questions or requests: <a href="mailto:mariana.minafro@gmail.com">mariana.minafro@gmail.com</a></p>
+
+  <footer>© 2026 LeafID · <a href="./">Home</a></footer>
+</div>
+</body>
+</html>
