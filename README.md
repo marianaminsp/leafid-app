@@ -8,15 +8,15 @@ An iPhone app that names the plant in front of you, tells you its story, and kee
 
 ---
 
-LeafID is designed and built by **Mariana Minafro Spinelli**: product decisions, design and the SwiftUI build, with Claude Code. The app's source is private. This repository holds its public website.
+LeafID is designed and built by **Mariana Minafro Spinelli**: product decisions, design and the SwiftUI build. The app's source is private. This repository holds its public website.
 
 ## Pages
 
 | Page | What you'll find |
 |---|---|
 | **[LeafID](https://marianaminsp.github.io/leafid-app/)** | The app's page: what it does, in its own voice. |
-| **[Case study](https://marianaminsp.github.io/leafid-app/case.html)** | The bet, the Botanical Card and key elements, five strategic calls, craft, what I'd do differently, status. |
-| **[How it's built](https://marianaminsp.github.io/leafid-app/build.html)** | How I work and how I use Claude Code. |
+| **[Case study](https://marianaminsp.github.io/leafid-app/case.html)** | The bet, the Botanical Card and key elements, five strategic calls, craft, status. |
+| **[How it's built](https://marianaminsp.github.io/leafid-app/build.html)** | How I work, the design system and the architecture. |
 | ↳ [Design system](https://marianaminsp.github.io/leafid-app/build.html#design-system) | Colours, type, radius, spacing, buttons and glyphs, taken from the app's Swift code. |
 | **[Privacy Policy](https://marianaminsp.github.io/leafid-app/privacy.html)** | What the app collects and why. Linked from the app and the App Store. |
 
