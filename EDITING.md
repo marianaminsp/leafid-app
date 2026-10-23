@@ -20,9 +20,9 @@ Plain HTML, CSS and a little JavaScript. No framework, no build step: edit, comm
 3. Anything written as `[TO FILL: …]` shows up highlighted on the page until you replace it.
 
 ## Add a screenshot
-1. Export it from the iPhone as PNG (portrait) and put it in `assets/screens/`, e.g. `assets/screens/home.png`.
-2. In `case.html`, under `screens`, set that screen's `image: "assets/screens/home.png"` and write an `alt` that describes what's on the screen.
-3. Keep each file under ~300 KB (run it through a compressor like TinyPNG) so the page stays fast.
+1. Take it on the iPhone (portrait), save it as JPG in `assets/screens/`, e.g. `assets/screens/home.jpg`.
+2. In `case.html`, under `screens`, set that screen's `image: "assets/screens/home.jpg"` and write an `alt` that describes what's on the screen.
+3. Keep each file under ~300 KB (on a Mac: `sips -s format jpeg -s formatOptions 82 -Z 1000 in.png --out out.jpg`) so the page stays fast.
 
 ## Use your own photo on the Botanical Card
 1. Put the photo in `assets/photos/`, e.g. `assets/photos/sycamore.jpg` (portrait, under ~300 KB).
