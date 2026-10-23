@@ -1,0 +1,481 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>LeafID case study</title>
+<meta name="description" content="LeafID product case study by Mariana Minafro Spinelli: the bet, five strategic calls, craft and retrospective.">
+<meta property="og:title" content="LeafID: product case study">
+<meta property="og:description" content="A pocket botanist for every walk. Product case study by Mariana Minafro Spinelli.">
+<meta property="og:image" content="https://marianaminsp.github.io/leafid-app/icon.png">
+<meta name="theme-color" content="#0B0F08" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#F5F6EE" media="(prefers-color-scheme: light)">
+<link rel="icon" href="icon.png">
+<link rel="apple-touch-icon" href="icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@700;800&display=swap">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- =====================================================================
+     EDIT THE COPY HERE
+     Every word on this page comes from this block. Change the text between
+     the quotes, save, push. Keep the quotes and commas.
+     - Inline links and <em>emphasis</em> are fine.
+     - "[TO FILL: ...]" shows up highlighted on the page until you replace it.
+     - Screenshots: put a PNG in assets/screens/ and set its "image" path.
+       Leave "image" empty ("") to show the "Screenshot coming" slot.
+     Voice: headlines reuse the app's own lines (onboarding, login, Arboretum).
+     ===================================================================== -->
+<script>
+window.COPY = {
+  caseHero: {
+    eyebrow: "LeafID · Product case study",
+    title: "The story most people walk past.",
+    lede: "How an iPhone app for curious walkers was framed, decided and built, from a web prototype to native iOS."
+  },
+
+  byline: {
+    who: "Mariana Minafro Spinelli",
+    role: "Product owner, design and build",
+    timeline: "April–October 2026 · web prototype to native iOS",
+    platform: "iPhone · English and Spanish"
+  },
+
+  bet: {
+    label: "The bet",
+    title: "Naming is solved. Meaning is open.",
+    quote: "From knowing a plant's name <em>to caring about it.</em>",
+    items: [
+      { title: "Insight", text: "Phones can already name most plants from one photo, so the name alone is a commodity. What makes a find stay with you is the second layer: what people call the plant where it comes from, how they have used it, the stories told about it. That layer lives in books, field guides and archives, and almost never reaches the person standing in front of the tree." },
+      { title: "Who it's for", text: "The curious walker. Someone who notices a plant on a walk or a trip, wants to know what it is and why it matters, and would like to remember where they found it." },
+      { title: "Ambition", text: [
+        "Turn a two-second glance into a moment worth keeping.",
+        "Free for everyone, forever, and free to run, so it never has to sell anything.",
+        "Feel at home on iOS: native gestures, haptics, VoiceOver, Dynamic Type, two languages from launch."
+      ] }
+    ]
+  },
+
+  features: {
+    label: "The product",
+    title: "Point. Capture. Reveal the depth.",
+    intro: "LeafID turns a two-second glance into knowledge you keep. One loop runs through the whole product: discover, understand, keep, return.",
+    items: [
+      { kicker: "Discover", title: "Know it in seconds.", text: "Name any plant from the camera or a past photo, with its family and an honest confidence score." },
+      { kicker: "Understand", title: "Meet the plant, not just its name.", text: "Every species arrives with its traditional name, how people have used it across cultures, and its story. Knowing a plant becomes caring about it." },
+      { kicker: "Keep", title: "A field journal that writes itself.", text: "The Herbarium keeps every find with the place and the moment you met it, yours to revisit." },
+      { kicker: "Return", title: "Curiosity that compounds.", text: "The Druid turns exploring into progress: ranks and achievements that reward going further and looking wider." }
+    ]
+  },
+
+  // ---- The Botanical Card showcase. Story text is real app content from the shared species cache. ----,
+
+  card: {
+    label: "The signature moment",
+    title: "Hold the whole story in your hand.",
+    intro: "The Botanical Card is where LeafID becomes more than an identifier. Tap the card to turn it over.",
+    flipLabel: "Turn the card",
+    species: {
+      common: "Sycamore maple",
+      scientific: "Acer pseudoplatanus",
+      known: "Bergahorn",
+      rarity: "Common",
+      found: "Found on a morning walk",
+      glyph: "redMaple",
+      colors: ["#4A7C3A", "#C9B465", "#8B6D5C"],
+      photo: "",            // e.g. "assets/photos/sycamore.jpg" (your own photo); empty = illustration
+      photoAlt: "",
+      panels: [
+        { title: "Botanical Spirit", text: "“A lofty, fast-growing maple whose broad, palmately lobed leaves unfurl in spring and blaze amber-gold in autumn, casting a wide, shade-giving canopy.”" },
+        { title: "Ethnobotany", text: "Its dense, resonant wood has long been prized for making musical instruments such as violins, piano soundboards and harpsichords." }
+      ]
+    },
+    callouts: [
+      { title: "One hero object", text: "The card is the only element in the app with a 48 pt corner. Everything else steps back." },
+      { title: "Its own name first", text: "“Known as Bergahorn”: the plant is introduced the way people where it grows call it." },
+      { title: "Culture, written once per species", text: "Botanical Spirit, Ethnobotany and Cultural Legacy are written on the server, cached, and shared by every walker." },
+      { title: "Colours from your photo", text: "The colour signature is sampled from the plant itself, so every card carries the light of the moment you found it." },
+      { title: "One gesture, two layers", text: "A row in the Herbarium grows into the card; a tap turns it over; closing returns it to its place." }
+    ],
+    note: "Story text: real LeafID content for this species. The plant image is drawn from its colour signature until a photo is added."
+  },
+
+  elements: {
+    label: "Key elements",
+    title: "The pieces that make it feel like LeafID.",
+    intro: "Rebuilt here from the app's own design tokens. Names, places and scores are example data.",
+    scan: { k: "Home", title: "The one action", text: "A slow pulse invites the first scan; a haptic answers the press. Lime appears once per screen." , gallery: "Upload from Gallery" },
+    result: { k: "Result", title: "The reveal", text: "The photo stays full-bleed while a translucent sheet rises with the name and how sure the botanist is. One clear next step.", common: "Sycamore maple", scientific: "Acer pseudoplatanus", badge: "94% Match Confidence", save: "Save to Herbarium" },
+    herbarium: { k: "Herbarium", title: "Specimen labels", text: "Each row reads like a label in a real herbarium: the plant, when, and where." },
+    rows: [
+      { common: "Sycamore maple", when: "Found 2 days ago", where: "City park", glyph: "redMaple", colors: ["#4A7C3A", "#C9B465", "#8B6D5C"] },
+      { common: "Grecian juniper", when: "Found last week", where: "Hillside trail", glyph: "leafSpray2", colors: ["#2E5E2E", "#5A3E8C", "#8B5A2B"] },
+      { common: "Linden", when: "Found in September", where: "Riverside path", glyph: "simpleLeaf", colors: ["#3E8E41", "#F7F7F7", "#C9C4B5"] }
+    ],
+    voice: { k: "Voice", line: "You just noticed <em>something.</em>", text: "The first line of onboarding. The app speaks like a field journal, quiet and a little mythic." },
+    rank: { k: "Druid", title: "A rank that grows with you", text: "Four ranks, each with its own glyph." },
+    ladder: [
+      { name: "Wandering Seed", range: "0–5 scans", glyph: "samara" },
+      { name: "Forest Sprout", range: "6–15 scans", glyph: "sprout", on: true },
+      { name: "Oak Guardian", range: "16–50 scans", glyph: "leafSpray2" },
+      { name: "Archdruid", range: "51+ scans", glyph: "leafSpray1" }
+    ],
+    ach: { k: "Achievements", title: "Rewards for exploring", text: "Earned by collecting more widely." },
+    achievements: [
+      { title: "Species Collector", text: "Log 3 distinct species", glyph: "redMaple" },
+      { title: "Week Wanderer", text: "A 7-day discovery streak", glyph: "walnutLeaf" }
+    ],
+    scanGlyph: "simpleLeaf",
+    saveGlyph: "simpleLeaf",
+    rootGlyph: "samaraClusterWide",
+    root: { k: "Arboretum", title: "Taking root", text: "“Every place you've stood to look closer becomes a pin on this map. We're building it now: keep scanning, and it'll already be full the day it opens.”" }
+  },
+
+  screens: {
+    label: "The core journey",
+    title: "From first glance to your collection.",
+    intro: "Four screens, each with the decision behind it.",
+    items: [
+      { title: "Home", image: "", alt: "", why: "One lime Scan button with a slow pulse and a haptic on press. Lime appears once per screen, so the plant photos carry the colour." },
+      { title: "Scanner", image: "", alt: "", why: "The camera stays full screen. A soft frame, drifting points and a sweeping line show the botanist is looking." },
+      { title: "Result", image: "", alt: "", why: "The photo stays full-bleed under a translucent sheet, with the name, the confidence and one next step." },
+      { title: "Herbarium", image: "", alt: "", why: "Each row is a specimen label: photo, name, when and where. The header gives way as you scroll so the collection gets the room." }
+    ]
+  },
+
+  decisions: {
+    label: "Leadership calls",
+    title: "Five calls that shaped LeafID.",
+    intro: "The strategic decisions, each written up with its context, options and trade-offs in the app's decision log.",
+    items: [
+      {
+        title: "Own meaning, not identification",
+        decision: "Position LeafID on the story behind a plant, not on naming it or caring for it. Identification comes from a specialist service; the product's effort goes into the Botanical Card.",
+        why: "Competing on identification accuracy means competing with well-funded incumbents on their ground. Meaning is open space, and it is the part people remember.",
+        tradeoff: "The story is written by AI, so it can be wrong or missing. I moved it to the server, cached it per species so every walker reads the same text, and set an alert for any empty result.",
+        evidence: "Decision records 0003, 0004"
+      },
+      {
+        title: "Rebuild native, keep the backend",
+        decision: "Replace the first version, a web app wrapped for iOS, with a native SwiftUI app, while keeping the same backend and data.",
+        why: "LeafID lives in two moments: the camera, and a card you hold and flip. A web wrapper could not give them the native camera, haptics, VoiceOver and the latest iOS materials. A cross-platform rewrite was proposed first and set aside for the same reason.",
+        tradeoff: "iPhone only at launch; Android waits. Months of rebuild instead of new features, contained by keeping the backend, so no data or accounts were lost.",
+        evidence: "Decision record 0001 and the Swift migration guide, April 2026"
+      },
+      {
+        title: "Free forever, designed to cost nothing",
+        decision: "No subscriptions, purchases or ads. Running the product costs nothing by design: free provider tiers, one story per species instead of per scan, and a fair limit of 10 identifications per person per day.",
+        why: "The goal is to bring people closer to nature, not to sell to them. Without a per-person limit, one heavy user could exhaust the shared free tier for everyone.",
+        tradeoff: "No revenue, and a visible limit on long walks, said in the app's own voice rather than as an error. The paywall was already built; it stays in the code, switched off, so the decision can be reversed.",
+        evidence: "Decision records 0005, 0006"
+      },
+      {
+        title: "Launch smaller, keep the promise",
+        decision: "Ship without the map. The Arboretum tab stays as “Taking root”, the app is iPhone-only and portrait-only, and it launches in English and Spanish.",
+        why: "Polishing the map before launch would have pulled the whole release behind one feature that a redesign would touch again.",
+        tradeoff: "A tab that is not live yet. It reads as a promise, not a gap, and because every scan saves its location, each walker's map will be full on the day it opens.",
+        evidence: "Decision record 0002"
+      },
+      {
+        title: "Trust is part of the product",
+        decision: "Treat the first minute as a trust moment: AI keys moved off the phone, Google's consent screen says “LeafID” instead of a server address, Sign in with Apple, and account deletion inside the app.",
+        why: "A new user decides whether to trust an app at sign-in. A technical address or an exposed key can lose them, or the free tier, before the first scan.",
+        tradeoff: "More sign-in code to own. The off-the-shelf fix was a paid custom domain, which would have broken the free-to-run rule.",
+        evidence: "Decision records 0003, 0007"
+      }
+    ]
+  },
+
+  craft: {
+    label: "Craft",
+    title: "Every detail, considered.",
+    intro: "The details, grouped the way design juries look at an app.",
+    items: [
+      { label: "Interaction", title: "Every gesture has a home", points: ["A Herbarium row grows into the card and shrinks back into its place.", "Cards flip like a real specimen sheet.", "The Scan button pulses slowly and answers with a haptic."] },
+      { label: "Inclusivity", title: "Built for every walker", points: ["VoiceOver labels on every control, Dynamic Type on all text.", "Motion respects Reduce Motion.", "44 pt minimum tap targets.", "English and Spanish from the first release."] },
+      { label: "Visuals", title: "Quiet, so the plants speak", points: ["Dark first: a deep forest green with one lime accent per screen.", "Eleven botanical glyphs drawn for the app, centred like SF Symbols.", "Plus Jakarta Sans and Manrope, bundled in the app."] },
+      { label: "Delight", title: "Collecting, not grinding", points: ["Ranks from Wandering Seed to Archdruid.", "Achievements for a first specimen, a 7-day streak, plants from two countries of origin.", "A colour signature taken from your own photo."] },
+      { label: "Impact", title: "Closer to nature, at no cost", points: ["Free forever, no ads, no purchases.", "Designed so the service never sends a bill.", "Turns any walk into a field trip."] },
+      { label: "Native", title: "At home on iOS", points: ["Native button styles, so iOS owns shape, states and Liquid Glass.", "System gestures and sheets wherever they serve the photo.", "One design system, written in Swift."] }
+    ]
+  },
+
+  differently: {
+    label: "Retrospective",
+    title: "What I'd do differently.",
+    intro: "The calls I would make on day one next time.",
+    items: [
+      { title: "Choose the platform before the first screen.", text: "Starting as a web app and moving to native cost months of rebuild. The product was always a camera and a card in the hand; that pointed to native from the start." },
+      { title: "Set the economics before building monetisation.", text: "The paywall was designed and built before LeafID became free forever. Deciding the business model first would have saved that work." },
+      { title: "Make failure loud from day one.", text: "The plant stories came back empty for about seven weeks after a provider retired its models, and nothing flagged it. Every empty result now raises an alert." },
+      { title: "Put a real iPhone in the loop from week one.", text: "The two biggest visual fixes, a translucent sheet that rendered solid and controls under the Dynamic Island, only appeared on a device." }
+    ]
+  },
+
+  status: {
+    label: "Status",
+    title: "Taking root.",
+    pill: "Preparing the TestFlight beta",
+    text: "LeafID runs end to end on a real iPhone and has passed a full walk-through. Next: a TestFlight beta, then the App Store.",
+    timeline: [
+      { done: true, text: "First version as a web app" },
+      { done: true, text: "Native SwiftUI rebuild on the same backend (from April 2026)" },
+      { done: true, text: "Design system rebuilt in code, custom glyphs and app icon (October 2026)" },
+      { done: true, text: "Full walk-through approved on a real iPhone: sign-in, scan, save, Herbarium, card, Druid, account deletion (October 2026)" },
+      { done: false, text: "TestFlight beta" },
+      { done: false, text: "App Store launch: [TO FILL: launch date]" }
+    ],
+    appStore: { label: "", href: "" },
+    testFlight: { label: "", href: "" }
+  },
+
+  contact: {
+    title: "Stay curious.",
+    text: "I'm Mariana Minafro Spinelli. LeafID is the product I designed and built end to end, in SwiftUI with Claude Code. I'd love to talk about design and product leadership.",
+    email: { label: "Email me", href: "mailto:mariana.minafro@gmail.com" },
+    linkedin: { label: "LinkedIn", href: "https://www.linkedin.com/in/marianaminafrosp/" },
+    build: { label: "See how it's built", href: "build.html" }
+  }
+
+};
+</script>
+<!-- ======================= END OF COPY ======================= -->
+
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="topbar">
+  <div class="wrap">
+    <a class="brand" href="./"><img src="icon.png" alt="" width="32" height="32"><span>LeafID</span></a>
+    <nav aria-label="Site">
+      <ul class="nav">
+        <li><a href="./">Overview</a></li>
+        <li><a href="case.html" aria-current="page">Case study</a></li>
+        <li><a href="build.html">How it's built</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+  <section class="hero solo" aria-labelledby="hero-title">
+    <div class="wrap">
+      <div class="hero-copy">
+        <p class="eyebrow" data-copy="caseHero.eyebrow"></p>
+        <h1 id="hero-title" data-copy="caseHero.title"></h1>
+        <p class="lede" data-copy="caseHero.lede"></p>
+      </div>
+    </div>
+  </section>
+
+  <aside class="byline" aria-label="Project facts">
+    <div class="wrap">
+      <dl>
+        <div><dt>Designed and built by</dt><dd data-copy="byline.who"></dd></div>
+        <div><dt>Role</dt><dd data-copy="byline.role"></dd></div>
+        <div><dt>Timeline</dt><dd data-copy="byline.timeline"></dd></div>
+        <div><dt>Platform</dt><dd data-copy="byline.platform"></dd></div>
+      </dl>
+    </div>
+  </aside>
+
+  <section class="section" id="bet" aria-labelledby="bet-title">
+    <div class="wrap split">
+      <div class="section-head">
+        <span class="label" data-copy="bet.label"></span>
+        <h2 id="bet-title" data-copy="bet.title"></h2>
+        <p class="quote" data-copy="bet.quote"></p>
+      </div>
+      <div data-render="facts" data-from="bet.items"></div>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="features-title">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="label" data-copy="features.label"></span>
+        <h2 id="features-title" data-copy="features.title"></h2>
+        <p class="lede" data-copy="features.intro"></p>
+      </div>
+      <div data-render="features" data-from="features.items"></div>
+    </div>
+  </section>
+
+  <div class="band">
+    <section class="section" id="card" aria-labelledby="card-title">
+      <div class="wrap">
+        <div class="section-head">
+          <span class="label" data-copy="card.label"></span>
+          <h2 id="card-title" data-copy="card.title"></h2>
+          <p class="lede" data-copy="card.intro"></p>
+        </div>
+        <div class="card-stage">
+          <div>
+            <div data-render="card" data-from="card.species"></div>
+          </div>
+          <div>
+            <div data-render="callouts" data-from="card.callouts"></div>
+            <p class="card-note" data-copy="card.note"></p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <section class="section" id="elements" aria-labelledby="elements-title">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="label" data-copy="elements.label"></span>
+        <h2 id="elements-title" data-copy="elements.title"></h2>
+        <p class="lede" data-copy="elements.intro"></p>
+      </div>
+      <div class="bento app">
+        <article class="tile dark t-scan">
+          <div class="tile-cap"><span class="k" data-copy="elements.scan.k"></span></div>
+          <div class="stage" aria-hidden="true">
+            <div style="display:grid;gap:14px;justify-items:center">
+              <div class="scanbtn"><span class="ring"></span><span class="ring r2"></span><span class="core"><span data-render="glyph" data-from="elements.scanGlyph"></span></span></div>
+              <span class="gallery-link" data-copy="elements.scan.gallery"></span>
+            </div>
+          </div>
+          <div class="tile-cap"><b data-copy="elements.scan.title"></b><span data-copy="elements.scan.text"></span></div>
+        </article>
+
+        <article class="tile lime t-result">
+          <div class="result">
+            <div class="tile-cap"><span class="k" data-copy="elements.result.k"></span><b data-copy="elements.result.title"></b><span data-copy="elements.result.text"></span></div>
+            <div class="sheet" aria-hidden="true">
+              <span class="grabber"></span>
+              <span class="common" data-copy="elements.result.common"></span>
+              <span class="sci" data-copy="elements.result.scientific"></span>
+              <span class="badge" data-copy="elements.result.badge"></span>
+              <span class="save"><span data-render="glyph" data-from="elements.saveGlyph"></span><span data-copy="elements.result.save"></span></span>
+            </div>
+          </div>
+        </article>
+
+        <article class="tile paper t-herb">
+          <div class="tile-cap"><span class="k" data-copy="elements.herbarium.k"></span></div>
+          <div data-render="rows" data-from="elements.rows" aria-hidden="true"></div>
+          <div class="tile-cap"><b data-copy="elements.herbarium.title"></b><span data-copy="elements.herbarium.text"></span></div>
+        </article>
+
+        <article class="tile deep t-voice">
+          <span class="k" data-copy="elements.voice.k"></span>
+          <p class="voice" data-copy="elements.voice.line"></p>
+          <div class="tile-cap"><span data-copy="elements.voice.text"></span></div>
+        </article>
+
+        <article class="tile dark t-rank">
+          <div class="tile-cap"><span class="k" data-copy="elements.rank.k"></span><b data-copy="elements.rank.title"></b><span data-copy="elements.rank.text"></span></div>
+          <div data-render="ladder" data-from="elements.ladder"></div>
+        </article>
+
+        <article class="tile lime t-ach">
+          <div class="tile-cap"><span class="k" data-copy="elements.ach.k"></span><b data-copy="elements.ach.title"></b><span data-copy="elements.ach.text"></span></div>
+          <div data-render="achievements" data-from="elements.achievements"></div>
+        </article>
+
+        <article class="tile dark t-root">
+          <div class="root">
+            <div class="map" aria-hidden="true"><span data-render="glyph" data-from="elements.rootGlyph"></span></div>
+            <div class="tile-cap"><span class="k" data-copy="elements.root.k"></span><span class="title" data-copy="elements.root.title"></span><p data-copy="elements.root.text"></p></div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="screens-title">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="label" data-copy="screens.label"></span>
+        <h2 id="screens-title" data-copy="screens.title"></h2>
+        <p class="lede" data-copy="screens.intro"></p>
+      </div>
+      <div data-render="screens" data-from="screens.items"></div>
+    </div>
+  </section>
+
+  <section class="section" id="case" aria-labelledby="decisions-title">
+    <div class="wrap split">
+      <div class="section-head">
+        <span class="label" data-copy="decisions.label"></span>
+        <h2 id="decisions-title" data-copy="decisions.title"></h2>
+        <p class="lede" data-copy="decisions.intro"></p>
+      </div>
+      <div data-render="decisions" data-from="decisions.items"></div>
+    </div>
+  </section>
+
+  <section class="section" id="craft" aria-labelledby="craft-title">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="label" data-copy="craft.label"></span>
+        <h2 id="craft-title" data-copy="craft.title"></h2>
+        <p class="lede" data-copy="craft.intro"></p>
+      </div>
+      <div data-render="craft" data-from="craft.items"></div>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="differently-title">
+    <div class="wrap split">
+      <div class="section-head">
+        <span class="label" data-copy="differently.label"></span>
+        <h2 id="differently-title" data-copy="differently.title"></h2>
+        <p class="lede" data-copy="differently.intro"></p>
+      </div>
+      <div data-render="steps" data-from="differently.items"></div>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="status-title">
+    <div class="wrap split">
+      <div class="section-head">
+        <span class="label" data-copy="status.label"></span>
+        <h2 id="status-title" data-copy="status.title"></h2>
+      </div>
+      <div class="status-card">
+        <span class="pill" data-copy="status.pill"></span>
+        <p data-copy="status.text"></p>
+        <div data-render="timeline" data-from="status.timeline"></div>
+        <div class="ctas">
+          <a class="btn btn-primary" data-link="status.appStore"></a>
+          <a class="btn btn-secondary" data-link="status.testFlight"></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="contact" aria-labelledby="contact-title">
+    <div class="wrap">
+      <div class="contact">
+        <h2 id="contact-title" data-copy="contact.title"></h2>
+        <p data-copy="contact.text"></p>
+        <div class="ctas">
+          <a class="btn btn-dark" data-link="contact.email"></a>
+          <a class="btn btn-ghost" data-link="contact.linkedin"></a>
+          <a class="btn btn-ghost" data-link="contact.build"></a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="wrap">
+    <span>© <span data-year>2026</span> LeafID · Mariana Minafro Spinelli</span>
+    <a href="case.html">Case study</a>
+    <a href="build.html">How it's built</a>
+    <a href="privacy.html">Privacy Policy</a>
+    <a href="mailto:mariana.minafro@gmail.com">Contact</a>
+  </div>
+</footer>
+
+<script src="assets/glyphs.js"></script>
+<script src="main.js"></script>
+</body>
+</html>

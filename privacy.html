@@ -30,12 +30,20 @@
   th, td { text-align:left; vertical-align:top; padding:10px 8px; border-bottom:1px solid var(--line); }
   th { color:var(--muted); font-weight:600; font-size:13px; text-transform:uppercase; letter-spacing:0.06em; }
   .table-scroll { overflow-x:auto; }
+  .top { display:flex; flex-wrap:wrap; align-items:center; gap:8px 16px; }
+  .top nav { display:flex; gap:4px; margin-left:auto; }
+  .top nav a { display:inline-flex; align-items:center; min-height:44px; padding:0 8px; color:var(--muted); text-decoration:none; font-weight:600; font-size:15px; }
+  .top nav a[aria-current="page"] { color:var(--fg); box-shadow:inset 0 -2px 0 var(--accent); }
+  a:focus-visible { outline:3px solid var(--accent); outline-offset:3px; border-radius:4px; }
   footer { margin-top:56px; padding-top:20px; border-top:1px solid var(--line); color:var(--muted); font-size:14px; }
 </style>
 </head>
 <body>
 <div class="wrap">
-  <a class="brand" href="./"><img src="icon.png" alt="">LeafID</a>
+  <header class="top">
+    <a class="brand" href="./"><img src="icon.png" alt="">LeafID</a>
+    <nav aria-label="Site"><a href="./">Overview</a><a href="case.html">Case study</a><a href="build.html">How it's built</a><a href="privacy.html" aria-current="page">Privacy</a></nav>
+  </header>
 
   <h1>Privacy Policy</h1>
   <p class="updated">Last updated: 4 October 2026</p>
@@ -102,7 +110,7 @@
   <h2>Contact</h2>
   <p>Questions or requests: <a href="mailto:mariana.minafro@gmail.com">mariana.minafro@gmail.com</a></p>
 
-  <footer>© 2026 LeafID · <a href="./">Home</a></footer>
+  <footer>© 2026 LeafID · <a href="./">Overview</a> · <a href="case.html">Case study</a> · <a href="build.html">How it's built</a> · <a href="mailto:mariana.minafro@gmail.com">Support</a></footer>
 </div>
 </body>
 </html>

@@ -1,0 +1,299 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How LeafID is built</title>
+<meta name="description" content="LeafID's process, design system and architecture: a native SwiftUI app whose design system lives in code, built with Claude Code.">
+<meta property="og:title" content="How LeafID is built">
+<meta property="og:description" content="Process, design system and architecture of LeafID, by Mariana Minafro Spinelli.">
+<meta property="og:image" content="https://marianaminsp.github.io/leafid-app/icon.png">
+<meta name="theme-color" content="#0B0F08" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#F5F6EE" media="(prefers-color-scheme: light)">
+<link rel="icon" href="icon.png">
+<link rel="apple-touch-icon" href="icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@700;800&display=swap">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- =====================================================================
+     EDIT THE COPY HERE (same rules as index.html)
+     The "tokens" part further down mirrors the app's Swift code
+     (Theme/Theme.swift, docs/DESIGN_SYSTEM.md in LeafID-native).
+     Update it only when the app's design system changes.
+     ===================================================================== -->
+<script>
+window.COPY = {
+  hero: {
+    eyebrow: "How it's built",
+    title: "Look closer at what it holds.",
+    lede: "How LeafID was framed, decided, designed, built and verified, and the design system underneath it."
+  },
+
+  process: {
+    label: "How I work",
+    title: "From noticing to shipping.",
+    intro: "Six steps, each with the artefact it leaves behind, the same ones I'd expect from a team.",
+    items: [
+      { title: "Frame the bet", text: "Name the insight (naming is solved, meaning is not), the walker it serves, and the principles that follow. A tone and naming manual came before any screen: the collection is the Herbarium, the profile is the Druid, the map is the Arboretum." },
+      { title: "Decide in writing", text: "Every decision with lasting effect becomes a decision record with its context, options, trade-offs and owner. Eight so far, from the platform to sign-in. They are how a team of one stays honest, and how a larger team would stay aligned." },
+      { title: "Design in code", text: "Visual prototypes first, then the design system written directly in Swift: one token per role, one button, one card, five radii. The written spec and the reference page are generated from that code, so design and product can't drift." },
+      { title: "Build with an AI engineering partner", text: "Claude Code implements against a project rules file, the decision records and a session log. I review every change the way a design and engineering lead would." },
+      { title: "Verify like a launch team", text: "Full walk-throughs on a real iPhone after every pass; audits against Apple's Human Interface Guidelines, Liquid Glass, sizing and accessibility; unit tests; one ordered checklist to TestFlight; a written release process for launch day." },
+      { title: "Measure what matters", text: "The product is instrumented before launch, so the first beta answers real questions on day one. The plan is below." }
+    ]
+  },
+
+  measure: {
+    label: "Measurement plan",
+    title: "What the beta will tell me.",
+    intro: "These events are already in the app. There are no results yet: LeafID has no public users, and I won't show numbers until it does.",
+    items: [
+      { moment: "First impression", event: "onboarding_screen_advanced", question: "Does the tutorial's voice pull people through, or where do they drop?" },
+      { moment: "First scan", event: "scan_initiated → scan_identify_result", question: "How many new walkers scan in their first session, and how often does identification succeed?" },
+      { moment: "The story lands", event: "card_flipped", question: "Do people turn the card to read the story? This is the test of the whole bet." },
+      { moment: "Coming back", event: "herbarium_viewed", question: "Do walkers return to their collection in the following week?" },
+      { moment: "Worth sharing", event: "plant_shared", question: "Is a find good enough to send to someone?" },
+      { moment: "Guardrails", event: "scan_quota_exceeded · narration_empty", question: "Is the daily limit too tight, and does the story ever come back empty?" }
+    ],
+    targets: "Targets for the beta: [TO FILL: e.g. share of new walkers who save a first find, share who flip a card]"
+  },
+
+  claude: {
+    label: "Working with Claude Code",
+    title: "Clear roles, written rules.",
+    intro: "Claude Code writes the code. The decisions, and the final yes, stay with me.",
+    items: [
+      { title: "What stays with me", text: "The strategy, the priorities, every product and visual call, and the final yes on anything that ships or touches production." },
+      { title: "What Claude Code does", text: "Writes and refactors the Swift, the backend functions, the design-system generator and the documentation, inside the rules I set." },
+      { title: "The rules live in the repository.", text: "A project rules file, decision records, a dated session log and a learnings log. Each session starts from the real state of the app, not from memory." },
+      { title: "Guardrails, not trust.", text: "Production deploys need my explicit yes. Secrets never go in chat or code. Docs-only and code changes are never mixed before launch. Nothing counts as done until I've seen it on a real iPhone." }
+    ]
+  },
+
+  system: {
+    label: "Design system",
+    title: "Quiet, so the plants speak.",
+    intro: "Native iOS first. One token per role, one scale per property, one component per job. Dark first: plant photos carry the colour.",
+    colorsTitle: "Colour roles",
+    colorsText: "Lime marks the one thing to do on each screen. Surfaces form an elevation scale: background, cards, anything raised on a card. Chips show WCAG contrast on the app background.",
+    typeTitle: "Type",
+    typeText: "Plus Jakarta Sans for display, Manrope for text. Both are bundled in the app under the SIL Open Font License, and all text scales with Dynamic Type.",
+    radiusTitle: "Corner radius",
+    radiusText: "Every rounded corner is one of five values. Buttons use the native iOS shape; capsules are only for pills.",
+    spacingTitle: "Spacing",
+    spacingText: "A 4 to 32 pt scale, with a 24 pt screen gutter.",
+    buttonsTitle: "Buttons and cards",
+    buttonsText: "One <code>LeafIDButton</code> built on the native iOS button styles, so iOS owns the shape, states and Liquid Glass. One <code>LeafIDCard</code>: solid on plain backgrounds, glass only over photos and the camera.",
+    glyphsTitle: "Glyphs",
+    glyphsText: "Eleven botanical glyphs replace generic leaf symbols: traced, smoothed so corners read as curves, and centred on their own shape so they sit like SF Symbols. System controls keep SF Symbols on purpose."
+  },
+
+  // ---- Design tokens: mirror of LeafID-native/Theme/Theme.swift (generated spec: docs/DESIGN_SYSTEM.md) ----
+  tokens: {
+    colors: [
+      { role: "primary", hex: "#93BC10", ratio: "8.7:1", use: "Brand lime: the one prominent action, active states, brand glyphs." },
+      { role: "onPrimary", hex: "#121212", dark: true, ratio: "8.4:1 on lime", use: "Labels and icons on solid primary." },
+      { role: "surface", hex: "#0B0F08", dark: true, use: "App background (elevation 0)." },
+      { role: "surfaceContainerLow", hex: "#10150C", dark: true, use: "Only the middle stop of full-screen background gradients." },
+      { role: "surfaceContainerHigh", hex: "#1C2116", dark: true, use: "Elevation 1: cards, tiles, sheets." },
+      { role: "surfaceContainerHighest", hex: "#22281C", dark: true, use: "Elevation 2: anything raised on a card." },
+      { role: "onSurface", hex: "#F2F5E7", ratio: "17.5:1", use: "Primary text and icons." },
+      { role: "onSurfaceVariant", hex: "#A9ADA0", ratio: "8.4:1", use: "Secondary text, inactive and locked states." },
+      { role: "outlineVariant", hex: "#45493F", dark: true, use: "Borders and dividers." },
+      { role: "caution", hex: "#F5A623", ratio: "9.5:1", use: "Low-confidence results and non-destructive warnings." },
+      { role: "error", hex: "#FF453A", ratio: "5.7:1", use: "Validation and error copy on dark surfaces." }
+    ],
+    type: [
+      { name: "displayTitle", family: "Plus Jakarta Sans", size: 34, weight: 700, weightName: "bold", tracking: 0.6, color: "#F2F5E7", sample: "Your Herbarium" },
+      { name: "accentLine", family: "Plus Jakarta Sans", size: 34, weight: 700, weightName: "bold", tracking: 0.6, color: "#93BC10", sample: "Reveal the depth." },
+      { name: "headerSubtitle", family: "Manrope", size: 14, weight: 500, weightName: "medium", tracking: 1.2, color: "#A9ADA0", sample: "12 specimens · 9 species" },
+      { name: "Button label", family: "Manrope", size: 16, weight: 600, weightName: "semibold", tracking: 0, color: "#F2F5E7", sample: "Save to Herbarium" }
+    ],
+    radius: [
+      { name: "small", pt: 8, use: "Tiny inner marks." },
+      { name: "medium", pt: 12, use: "Medium buttons, thumbnails, inner tiles." },
+      { name: "large", pt: 16, use: "Cards, tiles, fields, toasts." },
+      { name: "sheet", pt: 28, use: "Bottom sheets and full-width panels." },
+      { name: "hero", pt: 48, use: "The Botanical Card, the one hero object." }
+    ],
+    spacing: [
+      { name: "space4", pt: 4 }, { name: "space6", pt: 6 }, { name: "space8", pt: 8 }, { name: "space10", pt: 10 },
+      { name: "space12", pt: 12 }, { name: "space14", pt: 14 }, { name: "space16", pt: 16 }, { name: "space20", pt: 20 },
+      { name: "space22", pt: 22 }, { name: "space24", pt: 24 }, { name: "space28", pt: 28 }, { name: "space32", pt: 32 }
+    ],
+    glyphs: ["simpleLeaf", "leafSpray1", "leafSpray2", "samara", "samaraCluster1", "samaraCluster2", "samaraClusterWide", "sprout", "flower", "redMaple", "walnutLeaf"]
+  },
+
+  stack: {
+    label: "Architecture and cost",
+    title: "Built to never send a bill.",
+    intro: "Every provider runs on a free tier with no billing attached. The worst case is “come back tomorrow”, never a bill.",
+    app: { title: "iPhone app", text: "SwiftUI, iOS 16.4 and later. Sign in with Apple, Google or email." },
+    backend: { title: "Supabase", text: "Accounts, the Herbarium database and server functions. A per-user limit of 10 identifications a day is enforced on the server." },
+    identify: { title: "Identify a plant", text: "Pl@ntNet first, Gemini as a fallback. Pl@ntNet's free tier allows 500 identifications a day for the whole app, which is why the per-user limit exists." },
+    narrate: { title: "Write the story", text: "A shared cache per species first. On a miss, Groq writes the story, with Gemini as a fallback, and the result is saved for every future user." }
+  },
+
+  adr: {
+    label: "Decision log",
+    title: "Every call, written down.",
+    intro: "Decision records from the app's repository, in the order they were made.",
+    items: [
+      { id: "ADR-0001", title: "Platform direction", text: "Moving off the first web version; a cross-platform rewrite was proposed, and the app was rebuilt natively in SwiftUI." },
+      { id: "ADR-0002", title: "Defer the Arboretum map from launch", text: "The tab stays as “Taking root”; scan locations are still saved." },
+      { id: "ADR-0003", title: "Write the cultural story on the server", text: "AI keys were inside the app, where anyone could extract them. Now the story is written on the server, behind the daily limit." },
+      { id: "ADR-0004", title: "Shared story cache, free-tier providers", text: "One story per species, reused by every user; Groq first, Gemini as fallback." },
+      { id: "ADR-0005", title: "Daily identification limit per user", text: "10 a day, enforced on the server, so free shared tiers last for everyone." },
+      { id: "ADR-0006", title: "Free forever; paywall hidden", text: "No subscriptions or ads. The paywall code stays in, switched off." },
+      { id: "ADR-0007", title: "Sign in with Google directly", text: "So Google's consent screen says “LeafID”, without a paid custom domain." },
+      { id: "ADR-0008", title: "The design system is Swift code", text: "Native components, one token per role; specs generated from code." }
+    ]
+  }
+};
+</script>
+<!-- ======================= END OF COPY ======================= -->
+
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="topbar">
+  <div class="wrap">
+    <a class="brand" href="./"><img src="icon.png" alt="" width="32" height="32"><span>LeafID</span></a>
+    <nav aria-label="Site">
+      <ul class="nav">
+        <li><a href="./">Overview</a></li>
+        <li><a href="case.html">Case study</a></li>
+        <li><a href="build.html" aria-current="page">How it's built</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+  <section class="hero solo" aria-labelledby="hero-title">
+    <div class="wrap">
+      <div class="hero-copy">
+        <p class="eyebrow" data-copy="hero.eyebrow"></p>
+        <h1 id="hero-title" data-copy="hero.title"></h1>
+        <p class="lede" data-copy="hero.lede"></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="process-title">
+    <div class="wrap split">
+      <div class="section-head">
+        <span class="label" data-copy="process.label"></span>
+        <h2 id="process-title" data-copy="process.title"></h2>
+        <p class="lede" data-copy="process.intro"></p>
+      </div>
+      <div data-render="steps" data-from="process.items"></div>
+    </div>
+  </section>
+
+  <section class="section" id="measure" aria-labelledby="measure-title">
+    <div class="wrap split">
+      <div class="section-head">
+        <span class="label" data-copy="measure.label"></span>
+        <h2 id="measure-title" data-copy="measure.title"></h2>
+        <p class="lede" data-copy="measure.intro"></p>
+      </div>
+      <div>
+        <div data-render="metrics" data-from="measure.items"></div>
+        <p class="code-note" style="margin-top:16px" data-copy="measure.targets"></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="claude-title">
+    <div class="wrap split">
+      <div class="section-head">
+        <span class="label" data-copy="claude.label"></span>
+        <h2 id="claude-title" data-copy="claude.title"></h2>
+        <p class="lede" data-copy="claude.intro"></p>
+      </div>
+      <div data-render="steps" data-from="claude.items"></div>
+    </div>
+  </section>
+
+  <section class="section" id="design-system" aria-labelledby="system-title">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="label" data-copy="system.label"></span>
+        <h2 id="system-title" data-copy="system.title"></h2>
+        <p class="lede" data-copy="system.intro"></p>
+      </div>
+
+      <div class="subhead"><h3 data-copy="system.colorsTitle"></h3><p data-copy="system.colorsText"></p></div>
+      <div data-render="colors" data-from="tokens.colors"></div>
+
+      <div class="subhead"><h3 data-copy="system.typeTitle"></h3><p data-copy="system.typeText"></p></div>
+      <div data-render="type" data-from="tokens.type"></div>
+
+      <div class="subhead"><h3 data-copy="system.radiusTitle"></h3><p data-copy="system.radiusText"></p></div>
+      <div data-render="radius" data-from="tokens.radius"></div>
+
+      <div class="subhead"><h3 data-copy="system.spacingTitle"></h3><p data-copy="system.spacingText"></p></div>
+      <div data-render="spacing" data-from="tokens.spacing"></div>
+
+      <div class="subhead"><h3 data-copy="system.buttonsTitle"></h3><p data-copy="system.buttonsText"></p></div>
+      <div class="app-surface demo-buttons" role="img" aria-label="LeafIDButton variants: prominent, bordered and borderless">
+        <div class="b p">Save to Herbarium</div><small>.prominent: the one primary action</small>
+        <div class="b o">Continue with Google</div><small>.bordered: secondary actions</small>
+        <div class="b l">Skip</div><small>.borderless: tertiary actions</small>
+      </div>
+
+      <div class="subhead"><h3 data-copy="system.glyphsTitle"></h3><p data-copy="system.glyphsText"></p></div>
+      <div data-render="glyphs" data-from="tokens.glyphs"></div>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="stack-title">
+    <div class="wrap split">
+      <div class="section-head">
+        <span class="label" data-copy="stack.label"></span>
+        <h2 id="stack-title" data-copy="stack.title"></h2>
+        <p class="lede" data-copy="stack.intro"></p>
+      </div>
+      <div class="flow">
+        <div class="node"><h3 data-copy="stack.app.title"></h3><p data-copy="stack.app.text"></p></div>
+        <div class="arrow" aria-hidden="true">↓</div>
+        <div class="node accent"><h3 data-copy="stack.backend.title"></h3><p data-copy="stack.backend.text"></p></div>
+        <div class="arrow" aria-hidden="true">↓</div>
+        <div class="branches">
+          <div class="node"><h3 data-copy="stack.identify.title"></h3><p data-copy="stack.identify.text"></p></div>
+          <div class="node"><h3 data-copy="stack.narrate.title"></h3><p data-copy="stack.narrate.text"></p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="adr-title">
+    <div class="wrap split">
+      <div class="section-head">
+        <span class="label" data-copy="adr.label"></span>
+        <h2 id="adr-title" data-copy="adr.title"></h2>
+        <p class="lede" data-copy="adr.intro"></p>
+      </div>
+      <div data-render="adr" data-from="adr.items"></div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="wrap">
+    <span>© <span data-year>2026</span> LeafID · Mariana Minafro Spinelli</span>
+    <a href="case.html">Case study</a>
+    <a href="build.html">How it's built</a>
+    <a href="privacy.html">Privacy Policy</a>
+    <a href="mailto:mariana.minafro@gmail.com">Contact</a>
+  </div>
+</footer>
+
+<script src="assets/glyphs.js"></script>
+<script src="main.js"></script>
+</body>
+</html>
