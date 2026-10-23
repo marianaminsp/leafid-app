@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>How LeafID is built</title>
-<meta name="description" content="LeafID's process, design system and architecture: a native SwiftUI app whose design system lives in code, built with Claude Code.">
+<meta name="description" content="LeafID's process, design system and architecture: a native SwiftUI app whose design system lives in code.">
 <meta property="og:title" content="How LeafID is built">
 <meta property="og:description" content="Process, design system and architecture of LeafID, by Mariana Minafro Spinelli.">
 <meta property="og:image" content="https://marianaminsp.github.io/leafid-app/icon.png">
@@ -41,7 +41,7 @@ window.COPY = {
       { title: "Frame the bet", text: "Name the insight (naming is solved, meaning is not), the walker it serves, and the principles that follow. A tone and naming manual came before any screen: the collection is the Herbarium, the profile is the Druid, the map is the Arboretum." },
       { title: "Decide in writing", text: "Every decision with lasting effect becomes a decision record with its context, options, trade-offs and owner. Eight so far, from the platform to sign-in. They are how a team of one stays honest, and how a larger team would stay aligned." },
       { title: "Design in code", text: "Visual prototypes first, then the design system written directly in Swift: one token per role, one button, one card, five radii. The written spec and the reference page are generated from that code, so design and product can't drift." },
-      { title: "Build with an AI engineering partner", text: "Claude Code implements against a project rules file, the decision records and a session log. I review every change the way a design and engineering lead would." },
+      { title: "Build", text: "Native SwiftUI on a Supabase backend, worked against a project rules file, the decision records and a dated session log, so every session starts from the real state of the app." },
       { title: "Verify like a launch team", text: "Full walk-throughs on a real iPhone after every pass; audits against Apple's Human Interface Guidelines, Liquid Glass, sizing and accessibility; unit tests; one ordered checklist to TestFlight; a written release process for launch day." },
       { title: "Measure what matters", text: "The product is instrumented before launch, so the first beta answers real questions on day one. The plan is below." }
     ]
@@ -60,18 +60,6 @@ window.COPY = {
       { moment: "Guardrails", event: "scan_quota_exceeded · narration_empty", question: "Is the daily limit too tight, and does the story ever come back empty?" }
     ],
     targets: "Targets for the beta: [TO FILL: e.g. share of new walkers who save a first find, share who flip a card]"
-  },
-
-  claude: {
-    label: "Working with Claude Code",
-    title: "Clear roles, written rules.",
-    intro: "Claude Code writes the code. The decisions, and the final yes, stay with me.",
-    items: [
-      { title: "What stays with me", text: "The strategy, the priorities, every product and visual call, and the final yes on anything that ships or touches production." },
-      { title: "What Claude Code does", text: "Writes and refactors the Swift, the backend functions, the design-system generator and the documentation, inside the rules I set." },
-      { title: "The rules live in the repository.", text: "A project rules file, decision records, a dated session log and a learnings log. Each session starts from the real state of the app, not from memory." },
-      { title: "Guardrails, not trust.", text: "Production deploys need my explicit yes. Secrets never go in chat or code. Docs-only and code changes are never mixed before launch. Nothing counts as done until I've seen it on a real iPhone." }
-    ]
   },
 
   system: {
@@ -205,17 +193,6 @@ window.COPY = {
         <div data-render="metrics" data-from="measure.items"></div>
         <p class="code-note" style="margin-top:16px" data-copy="measure.targets"></p>
       </div>
-    </div>
-  </section>
-
-  <section class="section" aria-labelledby="claude-title">
-    <div class="wrap split">
-      <div class="section-head">
-        <span class="label" data-copy="claude.label"></span>
-        <h2 id="claude-title" data-copy="claude.title"></h2>
-        <p class="lede" data-copy="claude.intro"></p>
-      </div>
-      <div data-render="steps" data-from="claude.items"></div>
     </div>
   </section>
 

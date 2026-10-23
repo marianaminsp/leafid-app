@@ -37,13 +37,6 @@ window.COPY = {
     lede: "How an iPhone app for curious walkers was framed, decided and built, from a web prototype to native iOS."
   },
 
-  byline: {
-    who: "Mariana Minafro Spinelli",
-    role: "Product owner, design and build",
-    timeline: "April–October 2026 · web prototype to native iOS",
-    platform: "iPhone · English and Spanish"
-  },
-
   bet: {
     label: "The bet",
     title: "Naming is solved. Meaning is open.",
@@ -52,9 +45,9 @@ window.COPY = {
       { title: "Insight", text: "Phones can already name most plants from one photo, so the name alone is a commodity. What makes a find stay with you is the second layer: what people call the plant where it comes from, how they have used it, the stories told about it. That layer lives in books, field guides and archives, and almost never reaches the person standing in front of the tree." },
       { title: "Who it's for", text: "The curious walker. Someone who notices a plant on a walk or a trip, wants to know what it is and why it matters, and would like to remember where they found it." },
       { title: "Ambition", text: [
-        "Turn a two-second glance into a moment worth keeping.",
-        "Free for everyone, forever, and free to run, so it never has to sell anything.",
-        "Feel at home on iOS: native gestures, haptics, VoiceOver, Dynamic Type, two languages from launch."
+        "Make every walk a field trip: the moment you notice a plant becomes the moment you learn its story.",
+        "Give everyone a new way to connect with nature, and with the places they live in and visit.",
+        "Grow from a one-off lookup into a lasting habit: a personal archive that deepens with every walk."
       ] }
     ]
   },
@@ -62,16 +55,16 @@ window.COPY = {
   features: {
     label: "The product",
     title: "Point. Capture. Reveal the depth.",
-    intro: "LeafID turns a two-second glance into knowledge you keep. One loop runs through the whole product: discover, understand, keep, return.",
+    intro: "LeafID is a new way to connect with nature, and to see a city or a place through what grows in it. Uncover the deep behind the green, and every walk becomes a way to know a place and make it your own.",
     items: [
-      { kicker: "Discover", title: "Know it in seconds.", text: "Name any plant from the camera or a past photo, with its family and an honest confidence score." },
-      { kicker: "Understand", title: "Meet the plant, not just its name.", text: "Every species arrives with its traditional name, how people have used it across cultures, and its story. Knowing a plant becomes caring about it." },
-      { kicker: "Keep", title: "A field journal that writes itself.", text: "The Herbarium keeps every find with the place and the moment you met it, yours to revisit." },
-      { kicker: "Return", title: "Curiosity that compounds.", text: "The Druid turns exploring into progress: ranks and achievements that reward going further and looking wider." }
+      { kicker: "Discover", title: "Know it in seconds.", text: "Any plant, from the camera or a photo you already took." },
+      { kicker: "Understand", title: "The story behind the green.", text: "Its traditional name, how people have used it, and the stories told about it." },
+      { kicker: "Connect", title: "See a place differently.", text: "A park, a street, a trip abroad: what grows there carries the history of the place. Every find adds a new meaning to where you are." },
+      { kicker: "Keep", title: "A field journal that writes itself.", text: "Every find, with the place and the moment you met it, and a Druid rank that grows as you explore." }
     ]
   },
 
-  // ---- The Botanical Card showcase. Story text is real app content from the shared species cache. ----,
+  // ---- The Botanical Card showcase. Story text is real app content from the shared species cache. ----
 
   card: {
     label: "The signature moment",
@@ -94,11 +87,9 @@ window.COPY = {
       ]
     },
     callouts: [
-      { title: "One hero object", text: "The card is the only element in the app with a 48 pt corner. Everything else steps back." },
-      { title: "Its own name first", text: "“Known as Bergahorn”: the plant is introduced the way people where it grows call it." },
-      { title: "Culture, written once per species", text: "Botanical Spirit, Ethnobotany and Cultural Legacy are written on the server, cached, and shared by every walker." },
-      { title: "Colours from your photo", text: "The colour signature is sampled from the plant itself, so every card carries the light of the moment you found it." },
-      { title: "One gesture, two layers", text: "A row in the Herbarium grows into the card; a tap turns it over; closing returns it to its place." }
+      { title: "A plant, introduced like a person.", text: "It starts with the name people give it where it grows, <em>Bergahorn</em>, so you meet it through the culture it belongs to." },
+      { title: "The story behind the green.", text: "How people have used it and what it has meant to them turns a name into something you remember and care about." },
+      { title: "A memory of the moment.", text: "The card keeps the colours, the place and the time of your find, so it stays yours long after the walk." }
     ],
     note: "Story text: real LeafID content for this species. The plant image is drawn from its colour signature until a photo is added."
   },
@@ -106,7 +97,7 @@ window.COPY = {
   elements: {
     label: "Key elements",
     title: "The pieces that make it feel like LeafID.",
-    intro: "Rebuilt here from the app's own design tokens. Names, places and scores are example data.",
+    intro: "Small moments, each designed to make curiosity feel rewarding.",
     scan: { k: "Home", title: "The one action", text: "A slow pulse invites the first scan; a haptic answers the press. Lime appears once per screen." , gallery: "Upload from Gallery" },
     result: { k: "Result", title: "The reveal", text: "The photo stays full-bleed while a translucent sheet rises with the name and how sure the botanist is. One clear next step.", common: "Sycamore maple", scientific: "Acer pseudoplatanus", badge: "94% Match Confidence", save: "Save to Herbarium" },
     herbarium: { k: "Herbarium", title: "Specimen labels", text: "Each row reads like a label in a real herbarium: the plant, when, and where." },
@@ -166,10 +157,10 @@ window.COPY = {
         evidence: "Decision record 0001 and the Swift migration guide, April 2026"
       },
       {
-        title: "Free forever, designed to cost nothing",
-        decision: "No subscriptions, purchases or ads. Running the product costs nothing by design: free provider tiers, one story per species instead of per scan, and a fair limit of 10 identifications per person per day.",
-        why: "The goal is to bring people closer to nature, not to sell to them. Without a per-person limit, one heavy user could exhaust the shared free tier for everyone.",
-        tradeoff: "No revenue, and a visible limit on long walks, said in the app's own voice rather than as an error. The paywall was already built; it stays in the code, switched off, so the decision can be reversed.",
+        title: "Nature for everyone",
+        decision: "LeafID is free for everyone, forever. No subscriptions, no purchases, no ads. Anyone with a phone and a moment of curiosity can use it.",
+        why: "Connecting with nature shouldn't depend on what you can pay. To keep that promise for good, the product is designed to cost nothing to run: each plant's story is written once and shared by everyone who finds it.",
+        tradeoff: "A gentle daily limit of 10 discoveries per person keeps it open for all, said in the app's own voice: “LeafID is free. Discover up to 10 plants a day.” The paywall was already built; it stays switched off.",
         evidence: "Decision records 0005, 0006"
       },
       {
@@ -203,18 +194,6 @@ window.COPY = {
     ]
   },
 
-  differently: {
-    label: "Retrospective",
-    title: "What I'd do differently.",
-    intro: "The calls I would make on day one next time.",
-    items: [
-      { title: "Choose the platform before the first screen.", text: "Starting as a web app and moving to native cost months of rebuild. The product was always a camera and a card in the hand; that pointed to native from the start." },
-      { title: "Set the economics before building monetisation.", text: "The paywall was designed and built before LeafID became free forever. Deciding the business model first would have saved that work." },
-      { title: "Make failure loud from day one.", text: "The plant stories came back empty for about seven weeks after a provider retired its models, and nothing flagged it. Every empty result now raises an alert." },
-      { title: "Put a real iPhone in the loop from week one.", text: "The two biggest visual fixes, a translucent sheet that rendered solid and controls under the Dynamic Island, only appeared on a device." }
-    ]
-  },
-
   status: {
     label: "Status",
     title: "Taking root.",
@@ -234,7 +213,7 @@ window.COPY = {
 
   contact: {
     title: "Stay curious.",
-    text: "I'm Mariana Minafro Spinelli. LeafID is the product I designed and built end to end, in SwiftUI with Claude Code. I'd love to talk about design and product leadership.",
+    text: "I'm Mariana Minafro Spinelli. LeafID is the product I designed and built end to end, in SwiftUI. I'd love to talk about design and product leadership.",
     email: { label: "Email me", href: "mailto:mariana.minafro@gmail.com" },
     linkedin: { label: "LinkedIn", href: "https://www.linkedin.com/in/marianaminafrosp/" },
     build: { label: "See how it's built", href: "build.html" }
@@ -269,17 +248,6 @@ window.COPY = {
       </div>
     </div>
   </section>
-
-  <aside class="byline" aria-label="Project facts">
-    <div class="wrap">
-      <dl>
-        <div><dt>Designed and built by</dt><dd data-copy="byline.who"></dd></div>
-        <div><dt>Role</dt><dd data-copy="byline.role"></dd></div>
-        <div><dt>Timeline</dt><dd data-copy="byline.timeline"></dd></div>
-        <div><dt>Platform</dt><dd data-copy="byline.platform"></dd></div>
-      </dl>
-    </div>
-  </aside>
 
   <section class="section" id="bet" aria-labelledby="bet-title">
     <div class="wrap split">
@@ -418,17 +386,6 @@ window.COPY = {
         <p class="lede" data-copy="craft.intro"></p>
       </div>
       <div data-render="craft" data-from="craft.items"></div>
-    </div>
-  </section>
-
-  <section class="section" aria-labelledby="differently-title">
-    <div class="wrap split">
-      <div class="section-head">
-        <span class="label" data-copy="differently.label"></span>
-        <h2 id="differently-title" data-copy="differently.title"></h2>
-        <p class="lede" data-copy="differently.intro"></p>
-      </div>
-      <div data-render="steps" data-from="differently.items"></div>
     </div>
   </section>
 
