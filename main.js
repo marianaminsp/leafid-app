@@ -81,7 +81,7 @@
         var frame;
         if (s.image) {
           frame = el("div", { class: "phone" });
-          var img = el("img", { src: s.image, alt: s.alt || s.title, loading: "lazy", decoding: "async", width: "1179", height: "2556" });
+          var img = el("img", { src: s.image, alt: s.alt || s.title, loading: "lazy", decoding: "async", width: "1125", height: "2436" });
           frame.appendChild(img);
         } else {
           frame = el("div", { class: "phone placeholder", role: "img", "aria-label": "Screenshot of " + s.title + " coming soon" },
