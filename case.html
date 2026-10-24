@@ -72,26 +72,26 @@ window.COPY = {
     intro: "The Botanical Card is where LeafID becomes more than an identifier. Tap the card to turn it over.",
     flipLabel: "Turn the card",
     species: {
-      common: "Sycamore maple",
-      scientific: "Acer pseudoplatanus",
-      known: "Bergahorn",
+      common: "Holm oak",
+      scientific: "Quercus ilex",
+      known: "encina",
       rarity: "Common",
-      found: "Found on a morning walk",
-      glyph: "redMaple",
-      colors: ["#4A7C3A", "#C9B465", "#8B6D5C"],
-      photo: "",            // e.g. "assets/photos/sycamore.jpg" (your own photo); empty = illustration
-      photoAlt: "",
+      found: "Found on a city walk in Barcelona",
+      glyph: "simpleLeaf",
+      colors: ["#1A5D34", "#8B5A2B", "#C9B037"],
+      photo: "assets/photos/holm-oak.jpg",   // your own photo; empty = illustration
+      photoAlt: "A holm oak's dark evergreen canopy against a blue sky on a Barcelona street.",
       panels: [
-        { title: "Botanical Spirit", text: "“A lofty, fast-growing maple whose broad, palmately lobed leaves unfurl in spring and blaze amber-gold in autumn, casting a wide, shade-giving canopy.”" },
-        { title: "Ethnobotany", text: "Its dense, resonant wood has long been prized for making musical instruments such as violins, piano soundboards and harpsichords." }
+        { title: "Botanical Spirit", text: "“Stoic evergreen sentinel of rocky maquis, its leathery sclerophyllous leaves persist through drought and fire.”" },
+        { title: "Ethnobotany", text: "In Sardinia, the acorns of Quercus ilex are leached to remove tannins, then ground into flour for traditional flatbread." }
       ]
     },
     callouts: [
-      { title: "A plant, introduced like a person.", text: "It starts with the name people give it where it grows, <em>Bergahorn</em>, so you meet it through the culture it belongs to." },
+      { title: "A plant, introduced like a person.", text: "It starts with the name people give it where it grows, <em>encina</em>, so you meet it through the culture it belongs to." },
       { title: "The story behind the green.", text: "How people have used it and what it has meant to them turns a name into something you remember and care about." },
       { title: "A memory of the moment.", text: "The card keeps the colours, the place and the time of your find, so it stays yours long after the walk." }
     ],
-    note: "Story text: real LeafID content for this species. The plant image is drawn from its colour signature until a photo is added."
+    note: "Story text: real LeafID content for this species. Photo: my own find, on a street in Barcelona."
   },
 
   elements: {
@@ -99,10 +99,10 @@ window.COPY = {
     title: "The pieces that make it feel like LeafID.",
     intro: "Small moments, each designed to make curiosity feel rewarding.",
     scan: { k: "Home", title: "The one action", text: "A slow pulse invites the first scan; a haptic answers the press. Lime appears once per screen." , gallery: "Upload from Gallery" },
-    result: { k: "Result", title: "The reveal", text: "The photo stays full-bleed while a translucent sheet rises with the name and how sure the botanist is. One clear next step.", common: "Sycamore maple", scientific: "Acer pseudoplatanus", badge: "94% Match Confidence", save: "Save to Herbarium" },
+    result: { k: "Result", title: "The reveal", text: "The photo stays full-bleed while a translucent sheet rises with the name and how sure the botanist is. One clear next step.", common: "Holm oak", scientific: "Quercus ilex", badge: "94% Match Confidence", save: "Save to Herbarium" },
     herbarium: { k: "Herbarium", title: "Specimen labels", text: "Each row reads like a label in a real herbarium: the plant, when, and where." },
     rows: [
-      { common: "Sycamore maple", when: "Found 2 days ago", where: "City park", glyph: "redMaple", colors: ["#4A7C3A", "#C9B465", "#8B6D5C"] },
+      { common: "Holm oak", when: "Found 2 days ago", where: "City street", glyph: "simpleLeaf", colors: ["#1A5D34", "#8B5A2B", "#C9B037"] },
       { common: "Grecian juniper", when: "Found last week", where: "Hillside trail", glyph: "leafSpray2", colors: ["#2E5E2E", "#5A3E8C", "#8B5A2B"] },
       { common: "Linden", when: "Found in September", where: "Riverside path", glyph: "simpleLeaf", colors: ["#3E8E41", "#F7F7F7", "#C9C4B5"] }
     ],
