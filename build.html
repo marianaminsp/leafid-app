@@ -122,8 +122,8 @@ window.COPY = {
     intro: "Every provider runs on a free tier with no billing attached. The worst case is “come back tomorrow”, never a bill.",
     app: { title: "iPhone app", text: "SwiftUI, iOS 16.4 and later. Sign in with Apple or Google." },
     backend: { title: "Supabase", text: "Accounts, the Herbarium database and server functions. A per-user limit of 10 identifications a day is enforced on the server." },
-    identify: { title: "Identify a plant", text: "Pl@ntNet first, Gemini as a fallback. Pl@ntNet's free tier allows 500 identifications a day for the whole app, which is why the per-user limit exists." },
-    narrate: { title: "Write the story", text: "A shared cache per species first. On a miss, Groq writes the story, with Gemini as a fallback, and the result is saved for every future user." }
+    identify: { title: "Identify a plant", text: "Pl@ntNet identifies the plant. Its free tier allows 500 identifications a day for the whole app, which is why the per-user limit exists." },
+    narrate: { title: "Write the story", text: "A shared cache per species first. On a miss, Groq writes the story, and the result is saved for every future user." }
   },
 
   adr: {
@@ -134,7 +134,7 @@ window.COPY = {
       { id: "ADR-0001", title: "Platform direction", text: "Moving off the first web version; a cross-platform rewrite was proposed, and the app was rebuilt natively in SwiftUI." },
       { id: "ADR-0002", title: "Defer the Arboretum map from launch", text: "The tab stays as “Taking root”; scan locations are still saved." },
       { id: "ADR-0003", title: "Write the cultural story on the server", text: "AI keys were inside the app, where anyone could extract them. Now the story is written on the server, behind the daily limit." },
-      { id: "ADR-0004", title: "Shared story cache, free-tier providers", text: "One story per species, reused by every user; Groq first, Gemini as fallback." },
+      { id: "ADR-0004", title: "Shared story cache, free-tier providers", text: "One story per species, reused by every user and written by Groq." },
       { id: "ADR-0005", title: "Daily identification limit per user", text: "10 a day, enforced on the server, so free shared tiers last for everyone." },
       { id: "ADR-0006", title: "Free forever; paywall hidden", text: "No subscriptions or ads. The paywall code stays in, switched off." },
       { id: "ADR-0007", title: "Sign in with Google directly", text: "So Google's consent screen says “LeafID”, without a paid custom domain." },
