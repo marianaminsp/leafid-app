@@ -1,4 +1,4 @@
-/* LeafID site. Shared by index.html, build.html and privacy.html.
+/* LeafID site. Shared by index.html, case.html and privacy.html.
    Colours follow the app's tokens (Theme.swift). Dark is the app's own look;
    light is a paper version with the same green family, tuned for WCAG AA. */
 
@@ -446,7 +446,8 @@ code { font-family: ui-monospace, "SF Mono", Menlo, monospace; font-size: 0.9em;
   .t-voice { grid-column: span 2; }
   .t-rank { grid-column: span 2; grid-row: span 2; }
   .t-ach { grid-column: span 2; }
-  .t-root { grid-column: span 4; }
+  .t-quiet { grid-column: span 4; }
+  .t-root { grid-column: span 6; }
 }
 .tile { border-radius: var(--r-sheet); padding: 24px; display: grid; gap: 18px; align-content: space-between; overflow: hidden; position: relative; min-height: 250px; }
 .tile.dark { background: #0B0F08; color: #F2F5E7; box-shadow: inset 0 0 0 1px rgba(242,245,231,0.08); }
