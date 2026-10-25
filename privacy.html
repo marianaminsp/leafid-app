@@ -81,7 +81,7 @@
   <table>
     <tr><th>Provider</th><th>Purpose</th><th>What it receives</th></tr>
     <tr><td>Supabase</td><td>Accounts, database, photo storage</td><td>Account details, Herbarium, photos, locations</td></tr>
-    <tr><td>Pl@ntNet</td><td>Plant identification (the only service that receives your photo for identification)</td><td>The photo being identified. Pl@ntNet does not keep it after identifying it.</td></tr>
+    <tr><td>Pl@ntNet</td><td>Plant identification (the only service that receives your photo for identification)</td><td>The photo being identified, sent from our server without your account details. Pl@ntNet holds it only in memory while identifying it and does not store it; it logs the date and time of each request, without the photo.</td></tr>
     <tr><td>Groq</td><td>Plant descriptions</td><td>The plant’s scientific name only, never photos or personal data</td></tr>
     <tr><td>Wikipedia</td><td>Native range of a species</td><td>Plant names only</td></tr>
     <tr><td>PostHog</td><td>Product analytics</td><td>Usage events, account ID, email</td></tr>
