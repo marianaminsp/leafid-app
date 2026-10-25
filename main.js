@@ -1,4 +1,4 @@
-// LeafID site: fills each page from its COPY block (top of index.html / build.html).
+// LeafID site: fills each page from its COPY block (top of index.html / case.html).
 // No framework, no build step. Copy is written by the site owner, so inline <a>/<em> in it is allowed.
 (function () {
   "use strict";
@@ -88,7 +88,7 @@
             glyph("simpleLeaf") + "<span>Screenshot coming</span>");
         }
         fig.appendChild(frame);
-        fig.appendChild(el("figcaption", null, "<b>" + rich(s.title) + "</b><span>" + rich(s.why) + "</span>"));
+        fig.appendChild(el("figcaption", null, "<b>" + rich(s.title) + "</b>" + (s.why ? "<span>" + rich(s.why) + "</span>" : "")));
         li.appendChild(fig);
         ul.appendChild(li);
       });

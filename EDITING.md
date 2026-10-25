@@ -5,8 +5,7 @@ Plain HTML, CSS and a little JavaScript. No framework, no build step: edit, comm
 | File | What it is |
 |---|---|
 | `index.html` | The app's short public page (also the App Store marketing URL). |
-| `case.html` | Case study: the bet, Botanical Card, key elements, journey, decisions, craft, status, contact. |
-| `build.html` | How it's built, plus the design tokens. |
+| `case.html` | Case study: the bet, Botanical Card, key elements, journey, status, contact. |
 | `privacy.html` | Privacy Policy. The App Store links to this exact address: don't rename or move it. |
 | `styles.css` | Shared styles, light and dark mode (follows the visitor's system setting). |
 | `main.js` | Fills each page from its copy block. You shouldn't need to touch it. |
@@ -15,7 +14,7 @@ Plain HTML, CSS and a little JavaScript. No framework, no build step: edit, comm
 | `assets/photos/` | Your own plant photos for the Botanical Card. |
 
 ## Change the text
-1. Open the page (`index.html`, `case.html` or `build.html`) and find the block that starts with `EDIT THE COPY HERE`.
+1. Open the page (`index.html` or `case.html`) and find the block that starts with `EDIT THE COPY HERE`.
 2. Change the words between the quotes. Keep the quotes and the commas at the end of lines.
 3. Anything written as `[TO FILL: …]` shows up highlighted on the page until you replace it.
 
@@ -31,9 +30,6 @@ Plain HTML, CSS and a little JavaScript. No framework, no build step: edit, comm
 
 ## Add App Store or TestFlight links
 In `case.html`, under `status`, fill in `appStore` or `testFlight` with a `label` and `href`. Empty ones are hidden. On `index.html`, change `hero` → `status` from "Coming soon to the App Store".
-
-## If the app's design system changes
-The tokens in `build.html` mirror `LeafID-native/Theme/Theme.swift` and its generated spec `docs/DESIGN_SYSTEM.md`. Update the `tokens` block to match.
 
 ## GitHub Pages
 Pages is free for public repositories and is already on for this repo: Settings → Pages → Deploy from a branch → **main**, folder **/ (root)**.
