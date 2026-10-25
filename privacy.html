@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>LeafID Privacy Policy</title>
-<meta name="description" content="How LeafID collects, uses, and protects your information.">
+<title>Leaf ID Privacy Policy</title>
+<meta name="description" content="How Leaf ID collects, uses, and protects your information.">
 <link rel="icon" href="icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -41,75 +41,92 @@
 <body>
 <div class="wrap">
   <header class="top">
-    <a class="brand" href="./"><img src="icon.png" alt="">LeafID</a>
+    <a class="brand" href="./"><img src="icon.png" alt="">Leaf ID</a>
     <nav aria-label="Site"><a href="./">Overview</a><a href="case.html">Case study</a><a href="privacy.html" aria-current="page">Privacy</a></nav>
   </header>
 
   <h1>Privacy Policy</h1>
   <p class="updated">Last updated: 25 October 2026</p>
 
+  <p>In short:</p>
   <div class="summary">
     <ul>
       <li>We use your photos to identify plants and, when you save them, to build your Herbarium.</li>
-      <li>We never sell your data, show ads, or track you across other apps.</li>
+      <li>No ads, no selling data, no tracking across other apps. Usage analytics only if you allow it.</li>
       <li>You can delete your account and everything in it from inside the app at any time.</li>
     </ul>
   </div>
 
-  <h2>Who we are</h2>
-  <p>LeafID is an iOS app for identifying plants and keeping a personal collection of the ones you find. It is built and run by Mariana Minafro Spinelli (“we”, “us”). This policy explains what information the app handles, why, and the choices you have.</p>
+  <h2>1. Who we are</h2>
+  <p>Leaf ID is an iPhone app for identifying plants and keeping a collection of the ones you find, made by the Leaf ID team (“we”). The data controller is Mariana Minafro Spinelli, Spain. Contact for anything in this policy: <a href="mailto:app.leafid@gmail.com">app.leafid@gmail.com</a>.</p>
 
-  <h2>Information we collect</h2>
-  <p><strong>Account information.</strong> When you sign in with Apple, Google, or email, we receive your email address and, if you provide one, your name. Apple’s “Hide My Email” works with LeafID.</p>
-  <p><strong>Plant photos.</strong> Photos you take or choose in the app are sent to our servers for identification. If you save a plant to your Herbarium, the photo and a processed card image are stored with your account. Before upload, photos are re-encoded, which removes embedded metadata such as camera details and GPS tags.</p>
-  <p><strong>Location.</strong> If you allow location access, LeafID records where a plant was found (coordinates and the nearby place name) and saves it with that plant in your Herbarium. Location is only used while the app is open. You can turn it off in iOS Settings; identification still works without it.</p>
-  <p><strong>Your Herbarium.</strong> The plants you save, along with their names, descriptions, dates, and locations, are stored with your account so they sync across your devices.</p>
-  <p><strong>Usage and diagnostics.</strong> We collect app usage events (for example, that a scan was made or a screen was opened) and crash reports, to understand what works and fix problems. These are linked to your account so we can investigate issues you report.</p>
+  <h2>2. Account information</h2>
+  <p>New accounts are created with Sign in with Apple or Google. We receive your email address and, if shared, your name. Apple’s “Hide My Email” works with Leaf ID. Older accounts may use an email and password.</p>
 
-  <h2>How we use it</h2>
+  <h2>3. Plant photos and location</h2>
   <ul>
-    <li>To identify plants and show information about them.</li>
-    <li>To save and sync your Herbarium and profile.</li>
-    <li>To limit free identifications per day, which requires counting your scans.</li>
-    <li>To fix bugs, prevent abuse, and improve the app.</li>
+    <li>Photos you take or choose are sent to our server to identify the plant. If you save the plant, the photo and a processed card image are stored with your account. Before upload, photos are re-encoded, which removes camera details and GPS tags from the file.</li>
+    <li>If you allow location access, Leaf ID saves where you found each plant (exact coordinates and the nearby place name) with that plant. Location is used only while the app is open. You can turn it off in iOS Settings; identification still works without it.</li>
   </ul>
-  <p>We do not use your information for advertising, and we do not sell or rent it to anyone.</p>
 
-  <h2>Services that process data for us</h2>
-  <p>LeafID relies on these providers. Each receives only what it needs for its role.</p>
+  <h2>4. Your Herbarium and account activity</h2>
+  <p>The plants you save (names, card text, dates, places) are stored with your account so they sync across devices. We also keep your daily identification count (to apply the free daily limit) and the version and date of the Terms of Use you accepted.</p>
+
+  <h2>5. Usage analytics (only with your permission)</h2>
+  <p>After you sign in, Leaf ID asks whether you want to share usage data. If you tap Allow, the app sends events such as “a scan was made” or “a card was flipped”, linked to your account’s random ID, never to your email, name or photos. If you don’t allow it, or until you answer, nothing is collected. You can change your choice at any time in Druid → Privacy → Share usage data. Turning it off removes the analytics ID from your phone.</p>
+
+  <h2>6. Crash reports</h2>
+  <p>If the app crashes or hits an error, it sends a technical report (what failed, app version, device model and iOS version) so we can fix it. Reports are not linked to your account and don’t include your IP address.</p>
+
+  <h2>7. Why we use your data (legal basis)</h2>
   <div class="table-scroll">
   <table>
-    <tr><th>Provider</th><th>Purpose</th><th>What it receives</th></tr>
-    <tr><td>Supabase</td><td>Accounts, database, photo storage</td><td>Account details, Herbarium, photos, locations</td></tr>
-    <tr><td>Pl@ntNet</td><td>Plant identification (the only service that receives your photo for identification)</td><td>The photo being identified, sent from our server without your account details. Pl@ntNet holds it only in memory while identifying it and does not store it; it logs the date and time of each request, without the photo.</td></tr>
-    <tr><td>Groq</td><td>Plant descriptions</td><td>The plant’s scientific name only, never photos or personal data</td></tr>
-    <tr><td>Wikipedia</td><td>Native range of a species</td><td>Plant names only</td></tr>
-    <tr><td>PostHog</td><td>Product analytics</td><td>Usage events, account ID, email</td></tr>
-    <tr><td>Sentry</td><td>Crash reporting</td><td>Crash and device diagnostics</td></tr>
-    <tr><td>Apple, Google</td><td>Sign-in</td><td>Handled under their own privacy policies</td></tr>
+    <tr><th>Use</th><th>Legal basis</th></tr>
+    <tr><td>Account, identification, Herbarium, daily limit, Terms acceptance record</td><td>Contract: needed to provide the app you signed up for</td></tr>
+    <tr><td>Location saved with a plant</td><td>Your consent, given through the iOS permission; you can withdraw it in Settings</td></tr>
+    <tr><td>Usage analytics</td><td>Your consent (section 5); you can withdraw it in Druid</td></tr>
+    <tr><td>Crash reports, preventing abuse, overall statistics from our database (for example, scans per day or how many plants are identified)</td><td>Our legitimate interest in keeping Leaf ID working and improving it; these statistics are counted in aggregate, not per person</td></tr>
   </table>
   </div>
-  <p class="muted">Plant descriptions are generated once per species and shared across all users. They contain no personal information.</p>
+  <p>We don’t use your data for advertising and we never sell or rent it.</p>
 
-  <h2>Photo visibility</h2>
+  <h2>8. Services that process data for us</h2>
+  <div class="table-scroll">
+  <table>
+    <tr><th>Provider</th><th>Purpose</th><th>What it receives</th><th>Where</th></tr>
+    <tr><td>Supabase</td><td>Accounts, database, photo storage</td><td>Account details, Herbarium, photos, locations</td><td>Ireland (EU)</td></tr>
+    <tr><td>Pl@ntNet</td><td>Plant identification (the only service that receives your photo for identification)</td><td>The photo being identified, sent from our server without your account details. Pl@ntNet holds it only in memory while identifying it and does not store it; it logs the date and time of each request, without the photo.</td><td>France (EU)</td></tr>
+    <tr><td>Groq</td><td>Plant card text</td><td>The plant’s scientific name only, never photos or personal data</td><td>United States</td></tr>
+    <tr><td>Wikipedia</td><td>Native range of a species</td><td>Plant names only</td><td>Worldwide</td></tr>
+    <tr><td>PostHog</td><td>Usage analytics, only if you allow it</td><td>Usage events and your account’s random ID</td><td>EU</td></tr>
+    <tr><td>Sentry</td><td>Crash reports</td><td>Technical crash details, not linked to you</td><td>Germany (EU)</td></tr>
+    <tr><td>Apple, Google</td><td>Sign-in</td><td>Handled under their own privacy policies</td><td>—</td></tr>
+  </table>
+  </div>
+  <p>Your personal data stays in the EU. Groq and Wikipedia receive only plant names. Plant card text is written once per species with AI and shared by all users; it contains no personal information.</p>
+
+  <h2>9. Photo visibility</h2>
   <p>Saved photos are stored at private, randomly generated web addresses so they load quickly in the app. They are not listed or searchable, but anyone who has the exact address of a photo could open it. When you share a plant, you choose what to send.</p>
 
-  <h2>Retention and deletion</h2>
-  <p>We keep your account and Herbarium for as long as your account exists. To delete everything, open the <strong>Druid</strong> tab and tap <strong>Delete account</strong> in the app. This permanently removes your account, saved plants, locations, and stored photos. Copies in backups and provider logs expire on their normal schedules.</p>
+  <h2>10. How long we keep data</h2>
+  <ul>
+    <li>Account, Herbarium, photos, locations and Terms acceptance: until you delete your account.</li>
+    <li>Usage analytics: up to 1 year, and deleted with your account.</li>
+    <li>Crash reports: 30 days.</li>
+    <li>Server logs: about 1 day.</li>
+  </ul>
+  <p>To delete everything, open Druid and tap Delete account. This permanently removes your account, saved plants, photos, locations and the analytics linked to your account.</p>
 
-  <h2>Your rights</h2>
-  <p>Depending on where you live, you may have the right to access, correct, export, or delete your data, or to object to how it is used. Email us and we will respond within 30 days.</p>
+  <h2>11. Your rights</h2>
+  <p>You can ask to access, correct, export or delete your data, to restrict or object to how we use it, and you can withdraw any consent at any time (without affecting what was done before). Email <a href="mailto:app.leafid@gmail.com">app.leafid@gmail.com</a>; we reply within one month. You can also complain to your data protection authority; in Spain, the Agencia Española de Protección de Datos (<a href="https://www.aepd.es">www.aepd.es</a>).</p>
 
-  <h2>Children</h2>
-  <p>LeafID is not directed at children under 13, or the minimum age in your country. We do not knowingly collect data from them. If you believe a child has created an account, contact us and we will delete it.</p>
+  <h2>12. Minimum age</h2>
+  <p>You must be at least 16 to use Leaf ID. We don’t knowingly collect data from younger children. If you believe a child has an account, contact us and we will delete it.</p>
 
-  <h2>Changes</h2>
-  <p>If we change this policy, we will update the date above. For significant changes, we will also let you know in the app.</p>
+  <h2>13. Changes</h2>
+  <p>If we change this policy, we update the date above. For important changes we also tell you in the app.</p>
 
-  <h2>Contact</h2>
-  <p>Questions or requests: <a href="mailto:app.leafid@gmail.com">app.leafid@gmail.com</a></p>
-
-  <footer>© 2026 LeafID · <a href="./">Overview</a> · <a href="case.html">Case study</a> · <a href="mailto:app.leafid@gmail.com">Support</a></footer>
+  <footer>© 2026 Leaf ID · <a href="./">Overview</a> · <a href="case.html">Case study</a> · <a href="mailto:app.leafid@gmail.com">Support</a></footer>
 </div>
 </body>
 </html>
