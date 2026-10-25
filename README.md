@@ -8,8 +8,6 @@ An iPhone app that names the plant in front of you, tells you its story, and kee
 
 ---
 
-LeafID is designed and built by **Mariana Minafro Spinelli**: product decisions, design and the SwiftUI build. The app's source is private. This repository holds its public website.
-
 ## Pages
 
 | Page | What you'll find |
