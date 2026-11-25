@@ -46,7 +46,7 @@
   </header>
 
   <h1>Privacy Policy</h1>
-  <p class="updated">Last updated: 11 November 2026</p>
+  <p class="updated">Last updated: [release day]</p>
 
   <p>In short:</p>
   <div class="summary">
@@ -68,6 +68,7 @@
     <li>Photos you take or choose are sent to our server to identify the plant. If you save the plant, the photo and a processed card image are stored with your account. Before upload, photos are re-encoded, which removes camera details and GPS tags from the file.</li>
     <li>Before a photo is sent for identification, the app tries to blur any faces it finds. This is automatic and can miss a face, so please avoid photographing people. The photo saved in your Herbarium is not blurred.</li>
     <li>If you allow location access, Leaf ID saves where you found each plant (location rounded to about 100 m and the nearby place name) with that plant. Location is used only while the app is open. You can turn it off in iOS Settings; identification still works without it.</li>
+    <li>If you allow location access, the plant card can show the temperature where you are and in the plant’s native home. For this, the app sends your location rounded to about 10 km to our server. Our server asks Open-Meteo for the temperature at that rounded point and never sends your account details. We keep the rounded point and its temperature for up to a day, without your account, so other people nearby get it faster. Without location access, the card shows only the native home’s temperature.</li>
   </ul>
 
   <h2>4. Your Herbarium and account activity</h2>
@@ -84,7 +85,7 @@
   <table>
     <tr><th>Use</th><th>Legal basis</th></tr>
     <tr><td>Account, identification, Herbarium, daily limit, Terms acceptance record</td><td>Contract: needed to provide the app you signed up for</td></tr>
-    <tr><td>Location saved with a plant</td><td>Your consent, given through the iOS permission; you can withdraw it in Settings</td></tr>
+    <tr><td>Location saved with a plant, and your rounded location for the card’s temperatures</td><td>Your consent, given through the iOS permission; you can withdraw it in Settings</td></tr>
     <tr><td>Usage analytics</td><td>Your consent (section 5); you can withdraw it in Druid</td></tr>
     <tr><td>Crash reports, preventing abuse, overall statistics from our database (for example, scans per day or how many plants are identified)</td><td>Our legitimate interest in keeping Leaf ID working and improving it; these statistics are counted in aggregate, not per person</td></tr>
   </table>
@@ -98,13 +99,17 @@
     <tr><td>Supabase</td><td>Accounts, database, photo storage</td><td>Account details, Herbarium, photos, locations</td><td>Ireland (EU)</td></tr>
     <tr><td>Pl@ntNet</td><td>Plant identification (the only service that receives your photo for identification)</td><td>The photo being identified, sent from our server without your account details or location. If the app detects a face, it blurs it first. Pl@ntNet has not told us how long it keeps these photos, and it does not offer a data processing agreement yet.</td><td>France (EU)</td></tr>
     <tr><td>Groq</td><td>Plant card text</td><td>The plant’s scientific name only, never photos or personal data</td><td>United States</td></tr>
-    <tr><td>Wikipedia</td><td>Native range of a species</td><td>The plant’s name. Your phone asks Wikipedia directly, so Wikipedia also sees your phone’s IP address, as with any website you visit. It never receives your account details, photos or location.</td><td>Wikimedia Foundation (United States), servers worldwide</td></tr>
+    <tr><td>Wikipedia</td><td>Native range of a species</td><td>Plant names only</td><td>Worldwide</td></tr>
+    <tr><td>Open-Meteo</td><td>Temperatures on the plant card</td><td>Locations rounded to about 10 km, sent from our server, without your account details</td><td>Switzerland / EU</td></tr>
+    <tr><td>GBIF, Kew, Wikidata, IPNI</td><td>Plant facts on the card (classification, native range, names, conservation status)</td><td>Plant names only, sent from our server</td><td>Worldwide</td></tr>
+    <tr><td>Wikimedia Commons, GBIF</td><td>Botanical plates and herbarium photos on the card</td><td>Your device loads these images directly, so these services see your IP address, as with any website image. No account details.</td><td>Worldwide</td></tr>
     <tr><td>PostHog</td><td>Usage analytics, only if you allow it</td><td>Usage events and your account’s random ID</td><td>EU</td></tr>
     <tr><td>Sentry</td><td>Crash reports</td><td>Technical crash details, not linked to you</td><td>Germany (EU)</td></tr>
+    <tr><td>Apple (App Store)</td><td>Telling you when a new version is out</td><td>Once a day the app asks the App Store for Leaf ID’s latest version. It sends only Leaf ID’s app ID. Like any website, Apple sees your device’s IP address. No account details.</td><td>Worldwide</td></tr>
     <tr><td>Apple, Google</td><td>Sign-in</td><td>Handled under their own privacy policies</td><td>—</td></tr>
   </table>
   </div>
-  <p>Your account, photos and locations stay in the EU. Groq receives only plant names. Wikipedia receives the plant’s name and your phone’s IP address, and handles them under the Wikimedia Foundation’s privacy policy. Plant card text is written once per species with AI and shared by all users; it contains no personal information.</p>
+  <p>Your personal data stays in the EU. Groq, Wikipedia, GBIF, Kew, Wikidata and IPNI receive only plant names. Open-Meteo receives only locations rounded to about 10 km, never linked to your account. When the card shows plant images, your device loads them from Wikimedia Commons and GBIF, which see your IP address. Plant card text is written once per species with AI and shared by all users; it contains no personal information.</p>
 
   <h2>9. Photo visibility</h2>
   <p>Saved photos are stored privately. They load only in the app, for the signed-in account that saved them, and they have no public address. Like any online service, the people who run Leaf ID can technically reach stored data, and do so only to run and protect the service. When you share a plant, you choose what to send.</p>
@@ -115,6 +120,7 @@
     <li>Usage analytics: up to 1 year, and deleted with your account.</li>
     <li>Crash reports: 30 days.</li>
     <li>Server logs: about 1 day.</li>
+    <li>Rounded locations for the card’s temperatures: up to 1 day, never linked to your account.</li>
   </ul>
   <p>To delete everything, open Druid and tap Delete account. This permanently removes your account, saved plants, photos, locations and the analytics linked to your account. If you use Sign in with Apple, deleting your account also removes Leaf ID’s access to your Apple Account.</p>
 
